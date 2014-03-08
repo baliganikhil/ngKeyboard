@@ -55,10 +55,6 @@ CommonModule.directive('keyboard', function() {
             };
 
             scope.delete_char = function() {
-                if (nullOrEmpty(scope.barcode)) {
-                    return;
-                }
-
                 scope.barcode = scope.barcode.substring(0, scope.barcode.length - 1);
             };
 

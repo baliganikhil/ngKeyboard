@@ -35,14 +35,16 @@
         </div>
 
         <div class="row">
-            <button class="keyboard_button space mobile_space">&nbsp;</button>
+            <button class="keyboard_button space mobile_space" ng-click="button_click(' ')">&nbsp;</button>
         </div>
 
         <div class="row">
             <button class="keyboard_button clear_all"><i class="fa fa-trash-o"></i></button>
             <button class="caps_lock keyboard_button" ng-click="caps_lock = !caps_lock" ng-class="{caps_on: caps_lock}"><i class="fa fa-arrow-up"></i></button>
 
-            <button class="keyboard_button space tablet_space">&nbsp;</button>
+            <button class="keyboard_button space tablet_space" ng-click="button_click(' ')">&nbsp;</button>
+
+            <button ng-show="show_keyboard" ng-click="delete_char()" class="delete keyboard_button" style="height: 44px; border: solid 1px #000"><i class="fa fa-arrow-circle-o-left"></i></button>
 
             <button class="keyboard_button return" ng-click="button_click('\n')">return</button>
             <button class="keyboard_button close" ng-click="show_keyboard = false">Close</button>
@@ -166,13 +168,37 @@
 }
 
 /* Smaller than standard 960 (devices and browsers) */
-@media only screen and (max-width: 959px) {}
+@media only screen and (max-width: 959px) {
+    .keyboard_button {
+        height: 60px;
+        margin: 2px;
+        padding: 5px;
+        min-width: 50px;
+        margin-right: 5px;
+    }
+}
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {}
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    .keyboard_button {
+        height: 60px;
+        margin: 2px;
+        padding: 5px;
+        min-width: 50px;
+        margin-right: 5px;
+    }
+}
 
 /* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 767px) {}
+@media only screen and (max-width: 767px) {
+    .keyboard_button {
+        height: 60px;
+        margin: 2px;
+        padding: 5px;
+        min-width: 50px;
+        margin-right: 5px;
+    }
+}
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
