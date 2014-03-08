@@ -1,0 +1,135 @@
+<div class="keyboard_container">
+
+<div class="barcode_field_container">
+    <input type="text" class="barcode_field" ng-model="barcode">
+    <span class="keyboard_toggle" ng-click="show_keyboard = !show_keyboard"><i class="fa fa-keyboard-o"></i></span>
+</div>
+</div>
+
+    <div class="keyboard" ng-show="show_keyboard">
+        <div class="row">
+            <button class="keyboard_button" ng-click="button_click(character)" ng-repeat="(key, character) in numbers">{{character}}</button>
+            <button ng-click="delete_char()" class="delete keyboard_button">Del</button>
+        </div>
+
+        <div class="row" ng-repeat="(key, row) in small" ng-hide="caps_lock">
+            <button ng-click="button_click(character)" ng-repeat="(key, character) in row" class="keyboard_button">{{character}}</button>
+        </div>
+
+        <div class="row" ng-repeat="(key, row) in big" ng-show="caps_lock">
+            <button ng-click="button_click(character)" ng-repeat="(key, character) in row" class="keyboard_button">{{character}}</button>
+        </div>
+
+        <div class="row">
+            <button class="caps_lock keyboard_button" ng-click="caps_lock = !caps_lock">CAPS</button>
+            <button class="keyboard_button space">&nbsp;</button>
+            <button class="keyboard_button return" ng-click="button_click('\n')">return</button>
+            <button class="keyboard_button close" ng-click="show_keyboard = false">Close</button>
+        </div>
+    </div>
+
+<style>
+.keyboard_container {
+    position: relative;
+}
+
+.barcode_field_container {
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.keyboard_toggle {
+    height: 22px;
+    width: 35px;
+    padding: 3px;
+    margin-right: 10px;
+}
+
+.barcode_field {
+    border: none;
+    padding-left: 5px;
+    height: 27px;
+}
+
+.keyboard {
+    padding-bottom: 10px;
+    border: solid 1px #000;
+    box-shadow: 0 10px 15px #ccc;
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+    right: 10px;
+    border-radius: 3px;
+
+    background: #9c9aa7; /* Old browsers */
+    background: -moz-linear-gradient(top, #9c9aa7 0%, #6e7178 36%, #44444c 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9c9aa7), color-stop(36%,#6e7178), color-stop(100%,#44444c)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #9c9aa7 0%,#6e7178 36%,#44444c 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #9c9aa7 0%,#6e7178 36%,#44444c 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #9c9aa7 0%,#6e7178 36%,#44444c 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #9c9aa7 0%,#6e7178 36%,#44444c 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c9aa7', endColorstr='#44444c',GradientType=0 ); /* IE6-9 */
+}
+
+.keyboard .row {
+    text-align: center;
+}
+
+.keyboard_button {
+    display: inline-block;
+    padding: 5px 10px;
+    border: solid 1px #ccc;
+    margin: 5px;
+    border-radius: 3px;
+    color: #333;
+    cursor: pointer;
+
+    background: #dedee0; /* Old browsers */
+    background: -moz-linear-gradient(top, #dedee0 0%, #b4b4b6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dedee0), color-stop(100%,#b4b4b6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #dedee0 0%,#b4b4b6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #dedee0 0%,#b4b4b6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #dedee0 0%,#b4b4b6 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #dedee0 0%,#b4b4b6 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedee0', endColorstr='#b4b4b6',GradientType=0 ); /* IE6-9 */
+
+    border: solid 1px black;
+    min-width: 40px;
+    height: 35px;
+    color: #000;
+    font-size: 20px;
+    box-shadow: 0 1px 1px #333;
+}
+
+.keyboard_button:hover {
+    opacity: 0.8;
+}
+
+.keyboard_button.delete {
+    background: #aa0000;
+    color: #fff;
+}
+
+.keyboard_button.caps_lock {
+    background: #299a0b; /* Old browsers */
+    background: -moz-linear-gradient(top, #299a0b 0%, #299a0b 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#299a0b), color-stop(100%,#299a0b));
+    background: -webkit-linear-gradient(top, #299a0b 0%,#299a0b 100%);
+    background: -o-linear-gradient(top, #299a0b 0%,#299a0b 100%);
+    background: -ms-linear-gradient(top, #299a0b 0%,#299a0b 100%);
+    background: linear-gradient(to bottom, #299a0b 0%,#299a0b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#299a0b', endColorstr='#299a0b',GradientType=0 );
+    color: #fff;
+}
+
+.keyboard_button.space {
+    width: 150px;
+}
+
+.keyboard_button.close {
+    background: #222;
+    color: #fff;
+}
+</style>
