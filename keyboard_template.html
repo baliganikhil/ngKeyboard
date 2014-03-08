@@ -16,6 +16,8 @@
 <div class="barcode_field_container">
     <input type="text" class="barcode_field" ng-model="barcode">
     <span class="keyboard_toggle" ng-click="show_keyboard = !show_keyboard"><i class="fa fa-keyboard-o"></i></span>
+
+    <button ng-show="show_keyboard" ng-click="delete_char()" class="delete keyboard_button"><i class="fa fa-arrow-circle-o-left"></i></button>
 </div>
 </div>
 
@@ -37,9 +39,8 @@
         </div>
 
         <div class="row">
-            <button class="keyboard_button clear_all"></button>
+            <button class="keyboard_button clear_all"><i class="fa fa-trash-o"></i></button>
             <button class="caps_lock keyboard_button" ng-click="caps_lock = !caps_lock" ng-class="{caps_on: caps_lock}"><i class="fa fa-arrow-up"></i></button>
-            <button ng-click="delete_char()" class="delete keyboard_button"><i class="fa fa-arrow-circle-o-left"></i> Del</button>
 
             <button class="keyboard_button space tablet_space">&nbsp;</button>
 
@@ -79,8 +80,8 @@
     display: inline-block;
     position: absolute;
     bottom: 0px;
-    left: 2px;
-    right: 2px;
+    left: 0px;
+    right: 0px;
     border-radius: 3px;
 
     background: #9c9aa7; /* Old browsers */
@@ -131,6 +132,10 @@
 
 .keyboard_button.delete {
     padding: 0px 5px 0px 5px;
+    height: 27px;
+    background: #ddd;
+    border: none;
+    box-shadow: none;
 }
 
 .keyboard_button.caps_lock {
@@ -176,6 +181,7 @@
         margin: 2px;
         padding: 5px;
         min-width: 50px;
+        margin-right: 5px;
     }
 
     .mobile_space {
