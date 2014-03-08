@@ -38,8 +38,8 @@
             <button class="keyboard_button space mobile_space" ng-click="button_click(' ')">&nbsp;</button>
         </div>
 
-        <div class="row">
-            <button class="keyboard_button clear_all"><i class="fa fa-trash-o"></i></button>
+        <div class="row last">
+            <button class="keyboard_button clear_all" ng-click="clear_barcode()"><i class="fa fa-trash-o"></i></button>
             <button class="caps_lock keyboard_button" ng-click="caps_lock = !caps_lock" ng-class="{caps_on: caps_lock}"><i class="fa fa-arrow-up"></i></button>
 
             <button class="keyboard_button space tablet_space" ng-click="button_click(' ')">&nbsp;</button>
@@ -250,6 +250,14 @@
 
     .tablet_space {
         display: none;
+    }
+
+    .row.last {
+        height: 30px !important;
+    }
+
+    .row.last button {
+        height: 100% !important;
     }
 }
 

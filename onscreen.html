@@ -58,6 +58,10 @@ CommonModule.directive('keyboard', function() {
                 scope.barcode = scope.barcode.substring(0, scope.barcode.length - 1);
             };
 
+            scope.clear_barcode = function() {
+                scope.barcode = '';
+            };
+
             function nullOrEmpty(input) {
                 return ['', undefined, null].indexOf(input) > -1;
             }
