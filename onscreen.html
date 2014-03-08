@@ -1,74 +1,17 @@
-<html ng-app="CommonModule">
+<html ng-app="ngKeyboardModule">
 <head>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
     <script src="angular.min.js"></script>
-    <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 </head>
-<body ng-controller="CommonController">
+<body ng-controller="ngKeyboardController">
 
     <div keyboard callback="hey()"></div>
 
-<script type="text/javascript">
-var CommonModule = angular.module('CommonModule', []);
+    <div keyboard callback="hey()"></div>
 
-CommonModule.controller('CommonController', function($scope) {
-    $scope.hey = function() {
-        alert('');
-    };
-});
 
-CommonModule.directive('keyboard', function() {
-    return {
-        restrict: 'A',
-        templateUrl: 'keyboard_template.html',
-        scope: {
-            callback: '&callback'
-        },
-        link: function(scope, element, attrs) {
-            scope.barcode = '';
-            scope.show_keyboard = false;
-            scope.caps_lock = false;
-
-            scope.numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-
-            scope.small = [
-                ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-                ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-                ['z', 'x', 'c', 'v', 'b', 'n', 'm', '-', '_']
-            ];
-
-            scope.big = [
-                ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-                ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-                ['Z', 'X', 'C', 'V', 'B', 'N', 'M', '-', '_']
-            ];
-
-            scope.button_click = function(key) {
-                if (key == '\n') {
-                    scope.callback();
-                    scope.barcode = '';
-                    scope.show_keyboard = false;
-                }
-
-                scope.barcode = scope.barcode + key;
-            };
-
-            scope.delete_char = function() {
-                scope.barcode = scope.barcode.substring(0, scope.barcode.length - 1);
-            };
-
-            scope.clear_barcode = function() {
-                scope.barcode = '';
-            };
-
-            function nullOrEmpty(input) {
-                return ['', undefined, null].indexOf(input) > -1;
-            }
-        }
-    };
-});
-</script>
+<script type="text/javascript" src="ngKeyboardModule.js"></script>
 
 </body>
 </html>
